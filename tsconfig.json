@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "outDir": "./compile",
+    "strict": true,
+    "sourceMap": true,
+    "preserveValueImports": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["view/*"]
+}

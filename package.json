@@ -1,0 +1,30 @@
+{
+  "name": "electron_boilerplate",
+  "version": "1.0.0",
+  "description": "com.yunie.electron_boilerplate",
+  "main": "./compile/app.js",
+  "scripts": {
+    "viewstart": "cd view && cross-env BROWSER=none npm run start",
+    "viewbuild": "cd view && npm i && npm run build",
+    "compile": "tsc",
+    "debug": "cross-env ELECTRON_DEBUG=1 electron .",
+    "dev": "concurrently \"npm run viewstart\" \"wait-on http://localhost:3000 && nodemon\"",
+    "prestart": "npm run viewbuild && npm run compile",
+    "start": "electron .",
+    "prebuild": "rimraf ./dist",
+    "build": "node ./build/build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "nodemon": "^3.1.4",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "wait-on": "^8.0.0"
+  }
+}

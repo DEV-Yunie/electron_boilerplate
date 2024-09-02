@@ -1,0 +1,37 @@
+{
+  "version": "0.0.0",
+  "configurations": [
+    {
+      "name": "Debug Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "runtimeArgs": [
+        "--remote-debugging-port=9223"
+      ],
+      "args" : ["."],
+      "outputCapture": "std",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
+      "preLaunchTask": "npm: compile"
+    },
+    {
+      "name": "Debug Renderer Process",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9223,
+      "webRoot": "${workspaceFolder}/view",
+      "timeout": 60000,
+    }
+  ],
+  "compounds": [
+    { 
+      "name": "Debug All",
+      "configurations": ["Debug Main Process", "Debug Main Process"]
+    }
+  ]
+}
