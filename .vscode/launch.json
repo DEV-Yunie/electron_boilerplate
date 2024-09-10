@@ -6,32 +6,28 @@
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "runtimeExecutable": "npm", // script에서 사용하는 시작 명령어   
       "runtimeArgs": [
-        "--remote-debugging-port=9223"
+        "run","start-main-debug" // yarn start 로 치면 start에 해당(정의한 스크립트 명령어)
       ],
-      "args" : ["."],
-      "outputCapture": "std",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "!**/node_modules/**"
-      ],
-      "preLaunchTask": "npm: compile"
+      "env": {
+        "PORT": "3000" // 사용하는 port , ex)localhost:3000 의 3000
+      },
     },
     {
       "name": "Debug Renderer Process",
       "type": "chrome",
       "request": "attach",
       "port": 9223,
-      "webRoot": "${workspaceFolder}/view",
-      "timeout": 60000,
+      "webRoot": "${workspaceFolder}/view/src",
+      "url": "http://localhost:3000",
+      "timeout": 60000
     }
   ],
   "compounds": [
     { 
       "name": "Debug All",
-      "configurations": ["Debug Main Process", "Debug Main Process"]
+      "configurations": ["Debug Main Process", "Debug Renderer Process"]
     }
   ]
 }

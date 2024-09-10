@@ -9,6 +9,7 @@
     "compile": "tsc",
     "debug": "cross-env ELECTRON_DEBUG=1 electron .",
     "dev": "concurrently \"npm run viewstart\" \"wait-on http://localhost:3000 && nodemon\"",
+    "start-main-debug": "concurrently \"npm run viewstart\" \"wait-on http://localhost:3000 && cross-env ELECTRON_DEBUG=1 electron . --inspect=5858  --remote-debugging-port=9223\"",
     "prestart": "npm run viewbuild && npm run compile",
     "start": "electron .",
     "prebuild": "rimraf ./dist",
